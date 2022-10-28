@@ -4,7 +4,7 @@
     <div class="container">
         <h3><strong>LIHAT DATA</strong></h3>
         <hr>
-        <a href="{{route('home')}}" class="btn btn-warning">Kembali</a>
+        <a href="{{route('home')}}" class="btn btn-warning"><b>Kembali</b></a>
         <br>
         <br>
         <table class="table table-borderless">
