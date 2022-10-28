@@ -10,5 +10,11 @@ class Member extends Model
     public function Inventory(){
         return $this->hasMany(Inventory::class);
     }
+
+    protected $fillable = [
+        'nama_member',
+        'handphone',
+        'alamat',
+    ];
     use HasFactory;
 }

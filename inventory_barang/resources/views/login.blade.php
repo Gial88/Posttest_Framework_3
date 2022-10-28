@@ -18,7 +18,7 @@
                                     <b>Opps!</b> {{ session('username') }}
                                 </div>
                             @endif
-                            <form action="{{url('/action-login')}}" method="POST">
+                            <form action="{{ url('/action-login') }}" method="POST">
                                 @csrf
                                 <div class="form-outline mb-4">
                                     <input type="email" id="typeEmailX-2" class="form-control form-control-lg"

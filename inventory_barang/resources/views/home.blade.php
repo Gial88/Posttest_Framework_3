@@ -7,8 +7,9 @@
                 <h2>Inventory Barang</h2>
             </div>
             <div class="pull-right d-flex justify-content-between">
-                <a class="btn btn-success" href="">Tambah Data Barang</a>
-                <a class="btn btn-danger" href="{{ Auth::user() ? '/logout': '/login'}}">{{ Auth::user() ? 'Logout' : 'Login'}}</a>
+                <a class="btn btn-success" href="{{ route('tambah')}}">Tambah Data Barang</a>
+                <a class="btn btn-danger"
+                    href="{{ Auth::user() ? '/logout' : '/login' }}">{{ Auth::user() ? 'Logout' : 'Login' }}</a>
             </div>
         </div>
     </div>
@@ -29,30 +30,29 @@
             <th width="280px">Aksi</th>
         </tr>
         @php $i=1 @endphp
-        @foreach($barang as $brg)
-        <tr>
-            <td>{{$i}}</td>
-            <td>{{$brg->nama_barang}}</td>
-            <td>{{$brg->jumlah_barang}}</td>
-            <td>{{$brg->deskripsi_barang}}</td>
-            <td>{{$brg->category->kategori}}</td>
-            <td>{{$brg->member->nama_member}}</td>
-            <td>
-                <form action="" method="POST">
+        @foreach ($barang as $brg)
+            <tr>
+                <td>{{ $i }}</td>
+                <td>{{ $brg->nama_barang }}</td>
+                <td>{{ $brg->jumlah_barang }}</td>
+                <td>{{ $brg->deskripsi_barang }}</td>
+                <td>{{ $brg->category->kategori }}</td>
+                <td>{{ $brg->member->nama_member }}</td>
+                <td>
+                    <form action="" method="POST">
 
-                    <a class="btn btn-info" href="#">Show</a>
+                        <a class="btn btn-info" href="{{route('lihat', $brg->id)}}">Show</a>
 
-                    <a class="btn btn-primary" href="#">Edit</a>
+                        <a class="btn btn-primary" href="#">Edit</a>
 
-                    @csrf
-                    @method('DELETE')
+                        @csrf
+                        @method('DELETE')
 
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @php $i++ @endphp
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @php $i++ @endphp
         @endforeach
     </table>
-
 @endsection

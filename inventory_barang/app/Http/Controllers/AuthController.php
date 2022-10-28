@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,12 @@ class AuthController extends Controller
                 'name' => $request->nama,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+            ]);
+            Member::create([
+                'nama_member' => $request->nama,
+                'handphone' => $request->handphone,
+                'alamat' => $request->alamat
+
             ]);
             session()->flash('success', 'Berhasil Membuat Akun!');
 

@@ -17,5 +17,5 @@ class Inventory extends Model
 
     use HasFactory;
     protected $table = 'inventories';
-    protected $fillable = ['id', 'nama_barang', 'jumlah_barang', 'deskripsi_barang'];
+    protected $fillable = ['id', 'nama_barang', 'jumlah_barang', 'deskripsi_barang', 'category_id', 'member_id'];
 }

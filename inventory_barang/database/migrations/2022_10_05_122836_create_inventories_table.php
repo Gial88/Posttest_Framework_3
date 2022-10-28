@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->foreignId('member_id');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('member_id')->references('id')->on('members');
+
         });
     }
 

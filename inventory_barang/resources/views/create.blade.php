@@ -17,35 +17,36 @@
                                     <b>Opps!</b> {{ session('error') }}
                                 </div>
                             @endif
-                            <h3 class="mb-5">Register Akun</h3>
-                            <form action="{{ url('/action-register') }}" method="POST">
+                            <h3 class="mb-5">Tambah Data</h3>
+                            <form action="{{url('/tambah-data')}}" method="POST">
                                 @csrf
+                                <input type="hidden" name="member" value="{{$id_member}}">
                                 <div class="form-outline mb-4">
                                     <input type="text" id="typeEmailX-2" class="form-control form-control-lg"
-                                        name="nama" placeholder="Masukkan Nama Anda" required>
+                                        name="nama_brg" placeholder="Masukkan Nama Barang" required>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="typeEmailX-2" class="form-control form-control-lg"
-                                        name="email" placeholder="Masukkan Email Anda" required>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="number" id="typeNumberX-2" class="form-control form-control-lg"
-                                        name="handphone" placeholder="Masukkan Nomor Handphone Anda" required>
+                                    <input type="number" id="typeEmailX-2" class="form-control form-control-lg"
+                                        name="jumlah_brg" placeholder="Masukkan Jumlah Barang" required>
                                 </div>
                                 <div class="form-outline mb-4">
                                     <input type="text" id="typeEmailX-2" class="form-control form-control-lg"
-                                        name="alamat" placeholder="Masukkan Alamat Anda" required>
+                                        name="deskripsi_brg" placeholder="Deskripsi Barang" required>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
-                                        name="password" placeholder="Masukkan Password Anda" required>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
-                                        name="password2" placeholder="Masukkan Password Anda" required>
+                                    <select name="kategori" id="kategori_id"
+                                        class="form-select @error('kategori_id') is-invalid @enderror" aria-label="Kategori">
+                                        <option value="" selected>Pilih</option>
+                                        @foreach ($kategori as $kateg)
+                                            <option value={{ $kateg->id }}>{{ $kateg->kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('kategori_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <button class="btn btn-primary btn-lg btn-block" type="submit"
-                                    name="login">Register</button>
+                                    name="tambah">Tambah</button>
                             </form>
                         </div>
                     </div>
