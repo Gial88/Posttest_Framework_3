@@ -37,9 +37,35 @@ class InventoryController extends Controller
 
     }
 
-    public function lihat(Inventory $id){
+    public function lihat(Inventory $id){   
         return view('show',[
             'barang'=> $id
         ]);
+    }
+
+    public function ubah(Inventory $id){
+        return view('edit',[
+            'member'=> Member::all(),
+            'barang' => $id,
+            'kategori' => Category::all()
+        ]);
+    }
+
+    public function edit(Request $request, $id){
+        $inventory = Inventory::findOrFail($id);
+        $inventory->update([
+            'nama_barang' => $request->nama_brg,
+            'jumlah_barang' => $request->jumlah_brg,
+            'deskripsi_barang' => $request->deskripsi_brg,
+            'category_id' => $request->kategori,
+            'member_id' => $request->member,
+        ]);
+        return redirect()->route('home')->with('Success', 'Data Berhasil Diubah');  
+    }
+
+    public function hapus($id){
+        $inventory = Inventory::findOrFail($id);
+        $inventory->delete();
+        return redirect()->route('home')->with('Success', 'Data Berhasil Dihapus');
     }
 }

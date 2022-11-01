@@ -33,3 +33,6 @@ Route::get('/',[InventoryController::class,'index'])->name("home")->middleware('
 Route::get('/tambah',[InventoryController::class,'tambah'])->name("tambah")->middleware('auth');
 Route::post('/tambah-data',[InventoryController::class,'simpan'])->name("simpan")->middleware('auth');
 Route::get('/show/{id}',[InventoryController::class,'lihat'])->name("lihat")->middleware('auth');
+Route::get('/{id}/edit', [InventoryController::class, 'ubah'])->name('ubah')->middleware('auth');
+Route::put('/edit-data/{id}', [InventoryController::class, 'edit'])->name('edit')->middleware('auth');
+Route::delete('/hapus-data/{id}', [InventoryController::class, 'hapus'])->name('hapus')->middleware('auth');
