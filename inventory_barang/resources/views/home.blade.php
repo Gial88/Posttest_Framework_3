@@ -39,7 +39,7 @@
                 <td>{{ $brg->category->kategori }}</td>
                 <td>{{ $brg->member->nama_member }}</td>
                 <td>
-                    <form action="{{ route('hapus', $brg->id) }}" onsubmit="confirm('Apakah Data akan dihapus')" method="POST">
+                    <form action="{{ route('hapus', $brg->id) }}" onsubmit="return confirm('Apakah Data akan dihapus')" method="POST">
 
                         <a class="btn btn-info" href="{{route('lihat', $brg->id)}}">Show</a>
 
